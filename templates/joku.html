@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="text-center p">RESURSSIT {{resu}}</div>
+<div class="text-center p">TUOTANNOT {{tuotannot}}</div>
+<div class="text-center p">REAL_TUOTANNOT {{real_tutannot}}</div>
+<div class="text-center p">TAVOITTEET {{tavoitteet}}</div>
+<div class="text-center p">NEXT_BUILD_INDEX {{ntb}}</div>
+<div class="text-center p">LOCAL_PAUSE_STATE {{locpaus}}</div>
+<div class="text-center p">AUTORAID {{araid}}</div>
+<div class="text-center p">RESU_KEHITYS {{rfields}}</div>
+<div class="text-center p">NUIJA_TUOTANTO {{nprod}}</div>
+<div class="text-center p">GLOBAL_STATE {{pau}}</div>
+
+<div class="container">
+    {% include '_messages.html' %}
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" enctype="multipart/form-data">
+        <div>
+            {{ render_field(form.command, class="form-control") }}
+        </div>
+        <p><input type=submit value=send_command class="btn btn-info"></p>
+    </form>
+    <div class="text-center p">LOCAL_PAUSE: kyla_id  ja pau -> esim  0pau</div>
+    <div class="text-center p">LOCAL_UNPAUSE: kyla_id  ja unp -> esim  0unp</div>
+    <div class="text-center p">RESET: kyla_id  ja RST -> esim  0RST</div>
+    <div class="text-center p">TUOTANTOTAVOTE: kyla_id, TT ja tavote -> esim  0TT0.9,1.0,0.8,0.3</div>
+    <div class="text-center p">AUTORAID: kyla_id, ARA ja 0/1 -> esim  0ARA0</div>
+    <div class="text-center p">RESURSSIKENTTATUTANTO: kyla_id, RFP ja 0/1 -> esim  0RFP1</div>
+    <div class="text-center p">NUIJAMIESTUOTANTO: kyla_id, NMT ja 0/1 -> esim  0NMT1</div>
+    </br>
+    </br>
+    </br>
+    </br>
+    <form action="{{url_for('paussi')}}" method="post">
+        <button type="submit" class="btn btn-warning">GLOBAL_PAUSE</button>
+    </form>
+    <form action="{{url_for('unpause')}}" method="post">
+        <button type="submit" class="btn btn-info">GLOBAL_UNPAUSE</button>
+    </form>
+</div>
+
+
+{% endblock content %}
