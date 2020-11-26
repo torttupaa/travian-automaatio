@@ -39,7 +39,7 @@ db.create_all()
 
 @app.route('/')
 def index():
-    return "HELLO, NIGGER"
+    return "HELLO"
 
 #@app.route('/register', methods=['GET', 'POST'])
 def register():
